@@ -20,7 +20,6 @@ function solution(n) {
 
   function nqueen(board) {
     // 끝까지 채워졌을 경우 count 추가
-    debugger;
     if (board.length === n) {
       count += 1;
       return;
@@ -38,4 +37,4 @@ function solution(n) {
   return count;
 }
 
-console.log(solution(5));
+console.log(solution(4));
