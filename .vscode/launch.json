@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      "program": "/Users/seunghoon/Codestates/daily-algorithm/Programmers/매뉴 리뉴얼.js"
+      "program": "/Users/seunghoon/Codestates/daily-algorithm/Programmers/가장 먼 노드.js"
     }
   ]
 }
