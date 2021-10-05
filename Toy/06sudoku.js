@@ -36,9 +36,9 @@ const sudoku = function (board) {
     numbers = numbers.filter(n => !areaArr.includes(n));
     return numbers;
   }
-  // 배열 깊은 복사
+  // * 배열 깊은 복사
   let newBoard = initBoard();
-  // 0 좌표 검색
+  // * 0 좌표 검색
   let target = [];
   for (let y = 0; y < 9; y += 1) {
     for (let x = 0; x < 9; x += 1) {
@@ -48,19 +48,22 @@ const sudoku = function (board) {
     }
   }
 
-  // 모든 숫자가 들어와 있을 때 현재 보드를 리턴
+  // * 모든 숫자가 들어와 있을 때 재귀 종료
   if (target.length === 0) return newBoard;
 
   let result = [];
+  // * 삼중 필터 함수의 결과를 변수에 할당
   let numberArr = checknewBoard(target[0], target[1]);
+  // * 삼중 필터 결과가 없으면 false 반환
   if (numberArr.length === 0) return false;
+  // * 삼중 필터 결과만큼 반복문 실행
+  // * numberArr = [4, 5]
   for (let el of numberArr) {
+    // * 0 좌표에 하나의 숫자만 바꾸고 재귀
+    // * target = [0, 0] >>>> [y, x]
     newBoard[target[0]][target[1]] = el;
-    //console.log(x, y, el, numberArr)
-    //console.log(newBoard)
-    debugger;
     result = sudoku(newBoard);
-    // console.log(newBoard)
+    // * 마지막 좌표가 0이 아닐 경우 재귀 종료
     if (Array.isArray(result) && result[8][8] !== 0) return result;
   }
 };
