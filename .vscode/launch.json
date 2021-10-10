@@ -9,8 +9,9 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      // "program": "/Users/seunghoon/Codestates/daily-algorithm/Programmers/가장 먼 노드.js"
-      "program": "/Users/seunghoon/Codestates/daily-algorithm/Toy/23spiralTraversal.js"
+      "program": "/Users/seunghoon/Codestates/daily-algorithm/combi.js"
+      // "program": "/Users/seunghoon/Codestates/daily-algorithm/ProgrammersSection3/01자물쇠와열쇠.js"
+      // "program": "/Users/seunghoon/Codestates/daily-algorithm/Toy/25robotPath.js"
     }
   ]
 }
