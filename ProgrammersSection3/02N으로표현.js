@@ -10,7 +10,9 @@ function solution(N, number) {
     // TODO 같은 수가 늘어날 경우의 수를 미리 추가.
     result[i].add(Number(N.toString().repeat(i)));
     // TODO 이전 계산 결과들을 가지고 사칙연산 수행
+    // * 예를들어 3회 연산이면 (1, 2), (2, 1)
     // * 예를들어 4회 연산이면 (1, 3), (2, 2), (3, 1) 연산 결과를 4회 자리에 입력
+    // * 예를들어 5회 연산이면?(1, 4), (2, 3), (3, 2), (4, 1)
     for (let j = 1; j < i; j += 1) {
       for (let left of result[j]) {
         for (let right of result[i - j]) {
