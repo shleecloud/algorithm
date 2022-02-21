@@ -4,13 +4,13 @@ const binarySearch = function (arr, target) {
   let right = arr.length;
   let mid = Math.floor(arr.length / 2);
   while (left <= right) {
-    if (arr[mid] === target) return mid
-    if (arr[mid] < target) left = mid + 1
-    else right = mid - 1
-    mid = Math.floor((right + left) / 2)
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
+    mid = Math.floor((right + left) / 2);
   }
-  return -1
+  return -1;
 };
- 
+
 let output = binarySearch([0, 1, 2, 3, 4, 5, 6], 5);
-console.log(output)
+console.log(output);

@@ -52,10 +52,13 @@ const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
     // 본격적으로 count를 하는 로직입니다.
     // TODO 이진 탐색으로 가기 때문에, 두 배열의 현재 cursor(Idx)에서 현재 진행해야하는 count수(leftStep/rightStep)를 합친 index의 값을 비교합니다.
     // * (가장 첫 시행 때는, k가 100인 경우 두 배열의 50번째 Idx 값을 비교하게 되겠습니다. Idx는 0, Step은 50입니다.)
-    // * 비교 후 그 값이 작은 배열은, 해당 값 앞의 요소에 대해서 다시 검사할 필요가 없습니다. count에 포함해도 되는, 비교된 큰 값보다 무조건 작은 값이기 때문입니다. 그러므로, 값이 작은 쪽의 배열의 cursor(Idx)를 옮겨줍니다. 다음 turn 부터는 cursor 이후로만 탐색합니다. 이러한 동작을 이진 탐색이라고 할 수 있겠습니다.
+    // * 비교 후 그 값이 작은 배열은, 해당 값 앞의 요소에 대해서 다시 검사할 필요가 없습니다. count에 포함해도 되는, 비교된 큰 값보다 무조건 작은 값이기 때문입니다.
+    // * 그러므로, 값이 작은 쪽의 배열의 cursor(Idx)를 옮겨줍니다. 다음 turn 부터는 cursor 이후로만 탐색합니다. 이러한 동작을 이진 탐색이라고 할 수 있겠습니다.
+    // ! Right가 더 큰 경우, 작은 값은 무시된다.
     if (arr1[leftIdx + leftStep - 1] < arr2[rightIdx + rightStep - 1]) {
       leftIdx = leftIdx + leftStep;
       k = k - leftStep; // 한 번 처리가 끝나면, k값을 절반으로 떨어트립니다. (위의 "count에 포함해도 되는 무조건 작은 값이기 때문입니다."에 의해서, 후보군에서 떨어진 요소들은 무시하게되는 처리입니다.)
+      // ! Left가 더 큰 경우, 작은 값은 무시된다.
     } else {
       // 반대의 경우 오른쪽 배열 arr2의 cursor가 옮겨 지겠군요.
       rightIdx = rightIdx + rightStep;
@@ -72,5 +75,5 @@ const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
 
 let arr1 = [1, 4, 8, 10, 15, 20, 25, 30];
 let arr2 = [2, 3, 5, 9, 16, 26, 31, 32];
-let result = getItemFromTwoSortedArrays(arr1, arr2, 6);
+let result = getItemFromTwoSortedArrays(arr1, arr2, 10);
 console.log(result); // --> 8
