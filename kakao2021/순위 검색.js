@@ -1,3 +1,5 @@
+// naive solution
+// 효율성에서 실패함
 function solution(info, querys) {
   info = info.map((el) => el.split(' '));
   querys = querys.map((el) => el.split(' ').filter((el) => el !== 'and'));

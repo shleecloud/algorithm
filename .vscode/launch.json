@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      "program": "/Users/seunghoon/Codestates/daily-algorithm/kakao2021/순위 검색.js"
+      "program": "/Users/seunghoon/Codestates/daily-algorithm/kakao2021/순위 검색-reference.js"
       //"program": "/Users/seunghoon/Codestates/daily-algorithm/Toy/21inequalityNumber_sample.js"
     }
   ]
