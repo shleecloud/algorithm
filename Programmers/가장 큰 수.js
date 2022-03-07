@@ -1,11 +1,9 @@
 function solution(numbers) {
-  var answer = '';
-
-  a = [1, 5, 2, 4];
-
-  a.sort((a, b) => {
-    console.log(Number('' + a + b) < Number('' + b + a));
-    return Number('' + a + b) < Number('' + b + a);
+  numbers.sort((a, b) => {
+    return Number('' + b + a) - Number('' + a + b);
   });
-  return answer;
+  if (numbers[0] === 0) return '0';
+  return numbers.join('');
 }
+
+console.log(solution([0, 0, 0, 0, 0]));
