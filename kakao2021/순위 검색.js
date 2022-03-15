@@ -1,26 +1,62 @@
-// naive solution
-// 효율성에서 실패함
-function solution(info, querys) {
-  info = info.map((el) => el.split(' '));
-  querys = querys.map((el) => el.split(' ').filter((el) => el !== 'and'));
-  const result = [];
-  for (let i = 0; i < querys.length; i++) {
-    const query = querys[i];
-    let filterInfo = [];
-    for (let k = 0; k < info.length; k++) filterInfo.push(info[k].slice());
-    filterInfo = filterInfo.filter((el) => {
-      return Number(query[4]) <= Number(el[4]);
-    });
-    if (filterInfo.length === 0) {
-      result.push(0);
-      continue;
+function solution(info, query) {
+  // * 조합 만드는 함수 선언
+  function getCombination(arr, score, map, start) {
+    const key = arr.join('');
+    if (Array.isArray(map[key])) map[key].push(score);
+    else map[key] = [score];
+
+    for (let i = start; i < arr.length; i++) {
+      let combiArr = arr.slice();
+      combiArr[i] = '-';
+      getCombination(combiArr, score, map, i + 1);
     }
-    for (let j = 3; j >= 0; j--) {
-      filterInfo = filterInfo.filter((el) => query[j] === el[j] || query[j] === '-');
-      if (filterInfo.length === 0) break;
-    }
-    result.push(filterInfo.length);
   }
+
+  // * 이분 탐색 함수 선언
+  function binarySearch(arr, score) {
+    // 쿼리 결과가 없을 경우 예외 처리
+    if (!arr) return 0;
+    let left = 0;
+    let right = arr.length;
+    while (left < right) {
+      // let mid = left + Math.floor((right - left) / 2);
+      let mid = Math.floor((left + right) / 2);
+      // ! 초과로 구할 경우의 수식.
+      // ! 조건문으로 미만과 초과를 구분할 수 있다.
+      // if (arr[mid] > score) right = mid;
+      // else left = mid + 1;
+      if (arr[mid] >= score) right = mid;
+      else left = mid + 1;
+    }
+    // console.log(arr, score, left, right);
+    return arr.length - left;
+  }
+
+  // * 조합 만들기
+  const map = {};
+  for (let i = 0; i < info.length; i++) {
+    const infos = info[i].split(' ');
+    const score = infos.pop();
+    getCombination(infos, score, map, 0);
+  }
+
+  // * 조합 내의 점수 배열 정렬
+  for (let key in map) map[key].sort((a, b) => a - b);
+
+  // * 점수 찾기
+  const result = [];
+  for (let i = 0; i < query.length; i++) {
+    let queryString = query[i].replace(/ and /g, '').split(' ');
+    let queryScore = Number(queryString.pop());
+    queryString = queryString.join('');
+    let scoreIdx = binarySearch(map[queryString], queryScore);
+    result.push(scoreIdx);
+    // if (Array.isArray(map[queryString])) {
+    //   let scoreCount = map[queryString].length - scoreIdx;
+    //   result.push(scoreCount);
+    // } else result.push(0);
+  }
+
   return result;
 }
 
