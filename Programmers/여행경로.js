@@ -1,30 +1,37 @@
 function solution(tickets) {
-  const result = ['ICN'];
-  let stack = [];
+  const start = 'ICN';
   const visited = [];
-  tickets.sort((a, b) => b[1].localeCompare(a[1]));
-  const icnTickets = tickets.filter((el) => el[0] === 'ICN').pop();
-  stack.push(icnTickets);
+  // * 문자 정렬
+  tickets.sort((a, b) => a[1].localeCompare(b[1]));
   // * DFS 실행
-  while (stack.length > 0) {
-    const ticket = stack.pop();
-    const ticketStr = ticket.join('');
-    if (visited.includes(ticketStr)) continue;
-    visited.push(ticketStr);
-    result.push(ticket[1]);
-    const destinations = tickets.filter((el) => el[0] === ticket[1]);
-    stack = stack.concat(destinations);
+  function dfs(start, visited) {
+    const destinations = [];
+    // * 중복을 고려해서 인덱스를 기준으로 티켓 사용 여부 판단
+    for (let i = 0; i < tickets.length; i++) {
+      if (tickets[i][0] === start) destinations.push(i);
+    }
+    for (let destinationIdx of destinations) {
+      if (visited.includes(destinationIdx)) continue;
+      const newVisited = visited.slice();
+      newVisited.push(destinationIdx);
+      const newRoutes = dfs(tickets[destinationIdx][1], newVisited);
+      if (newRoutes.length === tickets.length) return newRoutes;
+    }
+    return visited;
   }
+
+  const routes = dfs(start, visited);
+  const result = ['ICN', ...routes.map((el) => tickets[el][1])];
   return result;
 }
 
-// console.log(
-//   solution([
-//     ['ICN', 'JFK'],
-//     ['HND', 'IAD'],
-//     ['JFK', 'HND'],
-//   ])
-// );
+console.log(
+  solution([
+    ['ICN', 'JFK'],
+    ['HND', 'IAD'],
+    ['JFK', 'HND'],
+  ])
+);
 
 // ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"]
 console.log(
