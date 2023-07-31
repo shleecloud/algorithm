@@ -1,5 +1,5 @@
 // 이진탐색
-function binarySearch(arr, target) {
+function binarySearchTest(arr, target) {
   let leftIdx = 0;
   let rightIdx = arr.length - 1;
 
@@ -18,7 +18,9 @@ function binarySearch(arr, target) {
   return -1;
 }
 
-console.log('🚀 ~ file: binarySearch.js:20 ~ binarySearch:', binarySearch([1, 2, 3, 4, 5, 6, 7], 6));
+test('binarySearch', () => {
+  expect(binarySearchTest([1, 2, 3, 4, 5, 6, 7], 6)).toBe(5);
+});
 
 // 재귀 이진탐색
 function recursiveBinarySearch(arr, leftIdx, rightIdx, target) {
@@ -36,8 +38,6 @@ function recursiveBinarySearch(arr, leftIdx, rightIdx, target) {
   }
 }
 
-const targetArr = [1, 2, 3, 4, 5, 6, 7];
-console.log(
-  '🚀 ~ file: binarySearch.js:40 ~ recursiveBinarySearch:',
-  recursiveBinarySearch([1, 2, 3, 4, 5, 6, 7], 0, targetArr.length - 1, 6),
-);
+test('recursiveBinarySearch', () => {
+  expect(recursiveBinarySearch([1, 2, 3, 4, 5, 6, 7], 0, targetArr.length - 1, 6)).toBe(5);
+});

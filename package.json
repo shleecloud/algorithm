@@ -1,6 +1,14 @@
 {
-    "dependencies": {
-        "fs": "^0.0.1-security",
-        "prettier": "^2.8.8"
-    }
+  "name": "alogorithm",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --config jest.config.js --passWithNoTests --detectOpenHandles --forceExit",
+    "test:watch": "jest --config jest.config.js --passWithNoTests --detectOpenHandles --watchAll"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jest": "^29.6.2",
+    "@jest/globals": "^29.6.2",
+    "prettier": "^2.8.8"
+  }
 }

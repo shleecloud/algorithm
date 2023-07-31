@@ -84,7 +84,7 @@ class Heap {
   };
 }
 
-class MinPriorityQueue extends Heap {
+class MinPriorityQueueTest extends Heap {
   constructor() {
     super();
   }
@@ -94,12 +94,16 @@ class MinPriorityQueue extends Heap {
   isEmpty = () => this.heap.length <= 0;
 }
 
-const minq = new MinPriorityQueue();
-minq.enqueue(1, 5);
-minq.enqueue(2, 8);
-minq.enqueue(3, 9);
-minq.enqueue(4, 1);
-console.log(minq.dequeue());
-console.log(minq.dequeue());
-console.log(minq.dequeue());
-console.log(minq.dequeue());
+test('MinPriorityQueue', () => {
+  const minq = new MinPriorityQueueTest();
+  minq.enqueue(1, 5);
+  minq.enqueue(2, 8);
+  minq.enqueue(3, 9);
+  minq.enqueue(4, 1);
+
+  expect(minq.dequeue()).toEqual({key: 1, value: 5});
+  expect(minq.dequeue()).toEqual({key: 2, value: 8});
+  expect(minq.dequeue()).toEqual({key: 3, value: 9});
+  expect(minq.dequeue()).toEqual({key: 4, value: 1});
+  expect(minq.dequeue()).toEqual(undefined);
+});

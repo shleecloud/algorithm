@@ -8,7 +8,7 @@ class Node {
 }
 
 // 이진 탐색 트리 클래스
-class BinarySearchTree {
+class BinarySearchTreeTest {
   constructor() {
     this.root = null;
   }
@@ -65,14 +65,16 @@ class BinarySearchTree {
 }
 
 // 이진 탐색 트리 사용 예시
-const bst = new BinarySearchTree();
-bst.insert(4);
-bst.insert(2);
-bst.insert(6);
-bst.insert(1);
-bst.insert(3);
-bst.insert(5);
-bst.insert(7);
+test('이진 탐색 트리 테스트', () => {
+  const bst = new BinarySearchTreeTest();
+  bst.insert(4);
+  bst.insert(2);
+  bst.insert(6);
+  bst.insert(1);
+  bst.insert(3);
+  bst.insert(5);
+  bst.insert(7);
 
-console.log(bst.search(5)); // true
-console.log(bst.search(8)); // false
+  expect(bst.search(5)).toBe(true);
+  expect(bst.search(8)).toBe(false);
+});

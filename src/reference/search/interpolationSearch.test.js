@@ -10,7 +10,7 @@ JavaScript에서 보간 탐색을 구현하려면 다음과 같은 단계를 따
 보간 탐색은 이진 탐색과 달리 중간 값을 찾을 때 선형 보간(linear interpolation)을 사용합니다. 다음은 보간 탐색을 구현한 JavaScript 함수의 예입니다:
 */
 
-function interpolationSearch(arr, target) {
+function interpolationSearchTest(arr, target) {
   let leftIdx = 0;
   let rightIdx = arr.length - 1;
 
@@ -36,7 +36,12 @@ function interpolationSearch(arr, target) {
   return -1; // 찾는 값이 없을 경우
 }
 
-console.log('🚀 ~ file: interpolationSearch.js:3 ~ interpolationSearch:', interpolationSearch([1, 2, 3, 4, 5, 6, 7], 5));
+test('보간 탐색 테스트', () => {
+  const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
+  const target = 7;
+  const result = interpolationSearchTest(sortedArray, target);
+  expect(result).toBe(3);
+});
 
 // 재귀 보간탐색
 function interpolationSearchRecursive(arr, target, low = 0, high = arr.length - 1) {
@@ -61,7 +66,9 @@ function interpolationSearchRecursive(arr, target, low = 0, high = arr.length - 
   return -1; // 찾는 값이 없을 경우
 }
 
-const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
-const target = 7;
-const result = interpolationSearchRecursive(sortedArray, target);
-console.log(result); // 3 (7의 인덱스)
+test('재귀 보간 탐색 테스트', () => {
+  const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
+  const target = 7;
+  const result = interpolationSearchRecursive(sortedArray, target);
+  expect(result).toBe(3);
+});

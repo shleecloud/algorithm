@@ -83,7 +83,7 @@ class Heap {
   };
 }
 
-class MaxPriorityQueue extends Heap {
+class MaxPriorityQueueTest extends Heap {
   constructor() {
     super();
   }
@@ -93,12 +93,16 @@ class MaxPriorityQueue extends Heap {
   isEmpty = () => this.heap.length <= 0;
 }
 
-const maxq = new MaxPriorityQueue();
-maxq.enqueue(1, 5);
-maxq.enqueue(2, 8);
-maxq.enqueue(3, 9);
-maxq.enqueue(4, 1);
-console.log(maxq.dequeue());
-console.log(maxq.dequeue());
-console.log(maxq.dequeue());
-console.log(maxq.dequeue());
+test('MaxPriorityQueue', () => {
+  const maxq = new MaxPriorityQueueTest();
+  maxq.enqueue(1, 5);
+  maxq.enqueue(2, 8);
+  maxq.enqueue(3, 9);
+  maxq.enqueue(4, 1);
+
+  expect(maxq.dequeue()).toEqual({key: 4, value: 1});
+  expect(maxq.dequeue()).toEqual({key: 3, value: 9});
+  expect(maxq.dequeue()).toEqual({key: 2, value: 8});
+  expect(maxq.dequeue()).toEqual({key: 1, value: 5});
+  expect(maxq.dequeue()).toEqual(undefined);
+});
