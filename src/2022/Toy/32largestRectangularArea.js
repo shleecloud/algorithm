@@ -1,6 +1,6 @@
 // https://sgc109.github.io/2021/03/18/largest-rectangle-in-histogram/
 const largestRectangularArea = function (histogram) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     // 언제 계산하냐면, 이 막대보다 작은 높이의 막대를 발견하는 즉시 계산해준다.
     // 왜냐하면 발견한 막대가 바로 앞서 스택에 넣었던 막대보다 오른쪽에 있으면서
     // 높이가 작은 가장 왼쪽 막대이기 때문이다.

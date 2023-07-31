@@ -7,9 +7,9 @@ const createMatrix = (village) => {
 };
 
 const gossipProtocol = function (village, row, col) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
 
-    // TODO: 모든 작업이 완료되었는지 확인
+    // 모든 작업이 완료되었는지 확인
     function isComplete(matrix) {
         for (let i = 0; i < matrix.length; i += 1) {
             if (matrix[i].includes('1')) return false;
@@ -17,7 +17,7 @@ const gossipProtocol = function (village, row, col) {
         return true;
     }
 
-    // TODO: 인접한 집에 소문이 퍼지는 함수
+    // 인접한 집에 소문이 퍼지는 함수
     function spread(matrix) {
         const newMatrix = [];
         // 2차원 복사

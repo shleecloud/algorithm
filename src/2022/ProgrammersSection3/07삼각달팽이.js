@@ -1,11 +1,11 @@
 function solution(n) {
-    // TODO: 삼각형 만들기
+    // 삼각형 만들기
     const array = Array.from({length: n}, () => []);
     array.map((el, i) => {
         el.length = i + 1;
         el.fill(null);
     });
-    // TODO: 반복문 3개로 회전 구현
+    // 반복문 3개로 회전 구현
     let row = -1;
     let col = 0;
     let count = 0;

@@ -1,5 +1,5 @@
 function solution(begin, target, words) {
-    // TODO 재귀 함수
+    // 재귀 함수
     function findWord(begin, count, visited) {
         // * 재귀 탈출 조건
         if (begin === target) return count;

@@ -1,5 +1,5 @@
 let bfs = function (node) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     const visited = [];
     let queue = [node];
     let count = 0;

@@ -1,6 +1,6 @@
 function solution(orders, course) {
-    // TODO 조합하는 방법을 알아보자
-    // TODO 손님들의 조합을 추출해서 문자열로 변환하는 함수
+    // 조합하는 방법을 알아보자
+    // 손님들의 조합을 추출해서 문자열로 변환하는 함수
     const getCombinations = function (arr, selectNumber) {
         const results = [];
         // 고를 수 있는 숫자가 하나 남았을 때 나머지 숫자 하나를 요소로 가진 배열 리턴
@@ -17,7 +17,7 @@ function solution(orders, course) {
         return results;
     };
 
-    // TODO 메인 로직
+    // 메인 로직
     orders = orders.map((el) => el.split('').sort());
     let resultArr = [];
     // * 코스만큼 반복

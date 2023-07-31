@@ -32,13 +32,13 @@ function solution(name) {
     let min = len - 1;
 
     for (let i = 0; i < len; i++) {
-        // TODO 상하 이동
+        // 상하 이동
         if (nameArray.indexOf(name[i]) < 13) {
             moveCount += nameArray.indexOf(name[i]);
         } else {
             moveCount += 26 - nameArray.indexOf(name[i]);
         }
-        // TODO 좌우 이동
+        // 좌우 이동
         let nextChar = i + 1;
         while (len > nextChar && name[nextChar] === 'A') {
             nextChar += 1;

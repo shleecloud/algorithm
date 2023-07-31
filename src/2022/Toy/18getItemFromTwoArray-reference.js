@@ -43,14 +43,14 @@ const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
         }
 
         // 엣지 케이스에 대한 if문입니다. 이 부분은 조금 어려울 수 있습니다! 주석을 꼼꼼히 읽어보세요.
-        // TODO 현재 남아있는 count보다, 남아있는 요소(arr1.length - leftIdx: 현재 cursor 뒤에 있는, count 후보 요소들)가 적을 경우, leftStep(현재 할당량)을 남아있는 요소들의 개수로 바꿔줍니다.
+        // 현재 남아있는 count보다, 남아있는 요소(arr1.length - leftIdx: 현재 cursor 뒤에 있는, count 후보 요소들)가 적을 경우, leftStep(현재 할당량)을 남아있는 요소들의 개수로 바꿔줍니다.
         // * (앞의 요소는 이미 모두 count 되었고 남아있는 요소는 5개인데, 현재 남아있는 count수가 7개라면, 7개에서 5개으로 바꿔줘야겠죠?)
         if (cnt > arr1.length - leftIdx) leftStep = arr1.length - leftIdx;
         // 마찬가지로 현재 남아있는 count보다, 남아있는 요소(arr2.length - rightIdx: 현재 cursor 뒤에 있는, count 후보 요소들)가 적을 경우, rightStep(현재 할당량)을 남아있는 요소들의 개수로 바꿔줍니다.
         if (cnt > arr2.length - rightIdx) rightStep = arr2.length - rightIdx;
 
         // 본격적으로 count를 하는 로직입니다.
-        // TODO 이진 탐색으로 가기 때문에, 두 배열의 현재 cursor(Idx)에서 현재 진행해야하는 count수(leftStep/rightStep)를 합친 index의 값을 비교합니다.
+        // 이진 탐색으로 가기 때문에, 두 배열의 현재 cursor(Idx)에서 현재 진행해야하는 count수(leftStep/rightStep)를 합친 index의 값을 비교합니다.
         // * (가장 첫 시행 때는, k가 100인 경우 두 배열의 50번째 Idx 값을 비교하게 되겠습니다. Idx는 0, Step은 50입니다.)
         // * 비교 후 그 값이 작은 배열은, 해당 값 앞의 요소에 대해서 다시 검사할 필요가 없습니다. count에 포함해도 되는, 비교된 큰 값보다 무조건 작은 값이기 때문입니다.
         // * 그러므로, 값이 작은 쪽의 배열의 cursor(Idx)를 옮겨줍니다. 다음 turn 부터는 cursor 이후로만 탐색합니다. 이러한 동작을 이진 탐색이라고 할 수 있겠습니다.

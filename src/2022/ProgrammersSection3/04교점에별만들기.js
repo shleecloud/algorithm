@@ -7,7 +7,7 @@ function solution(line) {
     let maxX = -INF;
     let maxY = -INF;
 
-    // TODO 교차점을 확인
+    //  교차점을 확인
     // * 반복문으로 조합 구현
     for (let i = 0; i < line.length - 1; i += 1) {
         for (let j = i + 1; j < line.length; j += 1) {
@@ -33,12 +33,12 @@ function solution(line) {
             maxY = Math.max(maxY, y);
         }
     }
-    // TODO 최대 최소 좌표로 배경 만들기
+    //  최대 최소 좌표로 배경 만들기
     const paper = Array.from(
         {length: maxY - minY + 1}, //
         () => Array.from({length: maxX - minX + 1}, () => '.'),
     );
-    // TODO 좌표로 별 찍기
+    //  좌표로 별 찍기
     // * 제일 작은 X가 0이 되어야 함.
     // * 제일 큰 Y가 0이 되어야 함.
     crossPoint.forEach(([x, y]) => {

@@ -4,12 +4,12 @@ function swap(idx1, idx2, arr) {
 }
 
 function getParentIdx(idx) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     return Math.floor((idx - 1) / 2);
 }
 
 function insert(heap, item) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     let idx = heap.length;
     let parentIdx = getParentIdx(idx);
     heap.push(item);
@@ -27,7 +27,7 @@ function insert(heap, item) {
 }
 
 function removeRoot(heap) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     if (heap.length === 0) return null;
     const minNum = heap.shift();
     if (heap.length === 0) return minNum;
@@ -59,7 +59,7 @@ const binaryHeap = function (arr) {
 
 const heapSort = function (arr) {
     let minHeap = binaryHeap(arr);
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     let result = [];
     for (let i = 0; i < arr.length; i += 1) {
         result.push(removeRoot(minHeap));

@@ -19,7 +19,7 @@ function getCombination(arr, selectNum) {
 }
 
 const TSP = function (places) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     const combination = getCombination(places, places.length);
     const distances = combination.map((el) => {
         let totalDistance = 0;

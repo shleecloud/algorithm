@@ -1,5 +1,5 @@
 const largestProductOfThree = function (arr) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     // 오름차순 정렬
     arr = arr.sort((a, b) => a - b);
     // 0이 있는지 확인하고 제거

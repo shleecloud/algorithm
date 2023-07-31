@@ -1,5 +1,5 @@
 function radixSort(arr) {
-    // todo: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
 
     // 해당하는 10의 자릿수를 확인
     function getDigit(num, digit) {

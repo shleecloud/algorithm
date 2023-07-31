@@ -1,5 +1,5 @@
 const mergeSort = function (arr) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
 
     if (arr.length === 1) return arr;
     const middleIndex = Math.floor(arr.length / 2);

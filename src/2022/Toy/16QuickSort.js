@@ -1,5 +1,5 @@
 const quickSort = function (arr, callback = (a) => a) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     if (arr.length < 2) return arr;
 
     const pivot = [];

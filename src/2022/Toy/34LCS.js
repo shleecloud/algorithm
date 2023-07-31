@@ -1,5 +1,5 @@
 const LCS = function (str1, str2) {
-    //TODO: 여기에 코드를 작성합니다.
+    //여기에 코드를 작성합니다.
     const str1Len = str1.length;
     const str2Len = str2.length;
     const array = Array.from({length: str1Len + 1}, () => Array.from({length: str2Len + 1}, () => 0));

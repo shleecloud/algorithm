@@ -1,5 +1,5 @@
 const insertionSort = function (arr, callback = (a) => a) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     // * insertionSort 함수의 두 번째 인자로 callback 함수를 받아서, 그 함수의 리턴값을 기준으로 요소들을 정렬해 보세요.
     debugger;
     let newArr = arr.slice();

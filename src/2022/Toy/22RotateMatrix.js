@@ -1,5 +1,5 @@
 const rotateMatrix = function (matrix, k = 1) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     if (matrix.length === 0) return [];
     // * Advanced 반복을 위한 함수선언
     function rotate(matrix) {

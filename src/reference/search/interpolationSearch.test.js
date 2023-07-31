@@ -11,64 +11,66 @@ JavaScript에서 보간 탐색을 구현하려면 다음과 같은 단계를 따
 */
 
 function interpolationSearchTest(arr, target) {
-  let leftIdx = 0;
-  let rightIdx = arr.length - 1;
+    let leftIdx = 0;
+    let rightIdx = arr.length - 1;
 
-  while (leftIdx <= rightIdx && target >= arr[leftIdx] && target <= arr[rightIdx]) {
-    if (leftIdx === rightIdx) {
-      if (arr[leftIdx] === target) return leftIdx;
-      return -1; // 찾는 값이 없을 경우
+    while (leftIdx <= rightIdx && target >= arr[leftIdx] && target <= arr[rightIdx]) {
+        if (leftIdx === rightIdx) {
+            if (arr[leftIdx] === target) return leftIdx;
+            return -1; // 찾는 값이 없을 경우
+        }
+
+        // 중간 값을 예측하기 위해 보간식 사용
+        const positionIdx = Math.floor(
+            leftIdx + ((rightIdx - leftIdx) / (arr[rightIdx] - arr[leftIdx])) * (target - arr[leftIdx]),
+        );
+        console.log('🚀 ~ file: interpolationSearch.js:27 ~ interpolationSearch ~ positionIdx:', positionIdx);
+
+        if (arr[positionIdx] === target) return positionIdx;
+
+        if (arr[positionIdx] < target) {
+            leftIdx = positionIdx + 1;
+        } else {
+            rightIdx = positionIdx - 1;
+        }
     }
 
-    // 중간 값을 예측하기 위해 보간식 사용
-    const positionIdx = Math.floor(leftIdx + ((rightIdx - leftIdx) / (arr[rightIdx] - arr[leftIdx])) * (target - arr[leftIdx]));
-    console.log('🚀 ~ file: interpolationSearch.js:27 ~ interpolationSearch ~ positionIdx:', positionIdx);
-
-    if (arr[positionIdx] === target) return positionIdx;
-
-    if (arr[positionIdx] < target) {
-      leftIdx = positionIdx + 1;
-    } else {
-      rightIdx = positionIdx - 1;
-    }
-  }
-
-  return -1; // 찾는 값이 없을 경우
+    return -1; // 찾는 값이 없을 경우
 }
 
 test('보간 탐색 테스트', () => {
-  const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
-  const target = 7;
-  const result = interpolationSearchTest(sortedArray, target);
-  expect(result).toBe(3);
+    const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
+    const target = 7;
+    const result = interpolationSearchTest(sortedArray, target);
+    expect(result).toBe(3);
 });
 
 // 재귀 보간탐색
 function interpolationSearchRecursive(arr, target, low = 0, high = arr.length - 1) {
-  if (low <= high && target >= arr[low] && target <= arr[high]) {
-    if (low === high) {
-      if (arr[low] === target) return low;
-      return -1; // 찾는 값이 없을 경우
+    if (low <= high && target >= arr[low] && target <= arr[high]) {
+        if (low === high) {
+            if (arr[low] === target) return low;
+            return -1; // 찾는 값이 없을 경우
+        }
+
+        // 중간 값을 예측하기 위해 보간식 사용
+        const position = Math.floor(low + ((high - low) / (arr[high] - arr[low])) * (target - arr[low]));
+
+        if (arr[position] === target) return position;
+
+        if (arr[position] < target) {
+            return interpolationSearchRecursive(arr, target, position + 1, high);
+        } else {
+            return interpolationSearchRecursive(arr, target, low, position - 1);
+        }
     }
 
-    // 중간 값을 예측하기 위해 보간식 사용
-    const position = Math.floor(low + ((high - low) / (arr[high] - arr[low])) * (target - arr[low]));
-
-    if (arr[position] === target) return position;
-
-    if (arr[position] < target) {
-      return interpolationSearchRecursive(arr, target, position + 1, high);
-    } else {
-      return interpolationSearchRecursive(arr, target, low, position - 1);
-    }
-  }
-
-  return -1; // 찾는 값이 없을 경우
+    return -1; // 찾는 값이 없을 경우
 }
 
 test('재귀 보간 탐색 테스트', () => {
-  const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
-  const target = 7;
-  const result = interpolationSearchRecursive(sortedArray, target);
-  expect(result).toBe(3);
+    const sortedArray = [2, 4, 6, 7, 10, 12, 15, 20];
+    const target = 7;
+    const result = interpolationSearchRecursive(sortedArray, target);
+    expect(result).toBe(3);
 });

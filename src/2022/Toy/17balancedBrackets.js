@@ -1,5 +1,5 @@
 const balancedBrackets = function (str) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     let parenthesis = 0;
     let brace = 0;
     let bracket = 0;

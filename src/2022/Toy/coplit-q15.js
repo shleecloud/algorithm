@@ -7,7 +7,7 @@
 // 빈 배열을 입력받은 경우, 빈 배열을 리턴해야 합니다.
 
 function flattenArr(arr) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     if (arr.length === 0) return [];
     // if (arr.length === 1) return arr[0];
 

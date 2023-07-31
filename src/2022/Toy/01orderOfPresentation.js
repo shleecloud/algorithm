@@ -1,5 +1,5 @@
 function orderOfPresentation(N, K) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     // N -> 최대값
     // K -> 배열, 요소 하나씩 돌면서 경우의 수 계산
     function factorial(num) {

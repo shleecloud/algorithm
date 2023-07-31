@@ -1,5 +1,5 @@
 function solution(n, edge) {
-    // TODO 양방향 엣지 만들기
+    // 양방향 엣지 만들기
     let edges = edge.reduce((acc, cur) => {
         acc[cur[0]] = !acc[cur[0]] ? [cur[1]] : acc[cur[0]].concat(cur[1]);
         acc[cur[1]] = !acc[cur[1]] ? [cur[0]] : acc[cur[1]].concat(cur[0]);
@@ -13,9 +13,9 @@ function solution(n, edge) {
     //   '5': [ 2 ],
     //   '6': [ 3 ]
     // }
-    // TODO 최단거리 구하기
+    // 최단거리 구하기
 
-    let;
+    // let;
 }
 
 let result = solution(6, [

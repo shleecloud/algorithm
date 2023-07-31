@@ -1,5 +1,5 @@
 const inequalityNumber = function (signs) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
     signs = signs.split(' ');
     let maximum = new Array(signs.length + 1).fill(null);
     let minimum = new Array(signs.length + 1).fill(null);

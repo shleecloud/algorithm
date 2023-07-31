@@ -1,5 +1,5 @@
 function barcode(len) {
-    // TODO: 여기에 코드를 작성하세요.
+    // 여기에 코드를 작성하세요.
     const numObj = {
         1: [2, 3],
         2: [1, 3],

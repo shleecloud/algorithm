@@ -6,36 +6,36 @@
         * 이후 들어온 숫자를 순서대로 비교 
 */
 function solution(numbers = []) {
-  let result = new Array(numbers.length).fill(-1);
-  let idxStack = [];
+    let result = new Array(numbers.length).fill(-1);
+    let idxStack = [];
 
-  for (let i = 0; i < numbers.length; i++) {
-    while (
-      !!idxStack && // stack이 비었는지 확인하고 비었으면 비교식 스킵
-      numbers[idxStack.at(-1)] < numbers[i] // 새로운 숫자가 stack pop 예정 숫자보다 크면
-    ) {
-      result[idxStack.pop()] = numbers[i]; // stack pop 하고 '뒤에 있는 큰 수' 를 갱신
+    for (let i = 0; i < numbers.length; i++) {
+        while (
+            !!idxStack && // stack이 비었는지 확인하고 비었으면 비교식 스킵
+            numbers[idxStack.at(-1)] < numbers[i] // 새로운 숫자가 stack pop 예정 숫자보다 크면
+        ) {
+            result[idxStack.pop()] = numbers[i]; // stack pop 하고 '뒤에 있는 큰 수' 를 갱신
+        }
+        idxStack.push(i); // 다음 숫자를 스택에 추가
     }
-    idxStack.push(i); // 다음 숫자를 스택에 추가
-  }
-  return result;
+    return result;
 }
 
 function naiveSolution(numbers = []) {
-  let result = [];
+    let result = [];
 
-  for (let i = 0; i < numbers.length; i++) {
-    let backBigNumber = -1;
+    for (let i = 0; i < numbers.length; i++) {
+        let backBigNumber = -1;
 
-    for (let j = i + 1; j < numbers.length; j++) {
-      if (numbers[i] < numbers[j]) {
-        backBigNumber = numbers[j];
-        break;
-      }
+        for (let j = i + 1; j < numbers.length; j++) {
+            if (numbers[i] < numbers[j]) {
+                backBigNumber = numbers[j];
+                break;
+            }
+        }
+        result.push(backBigNumber);
     }
-    result.push(backBigNumber);
-  }
-  return result;
+    return result;
 }
 
 solution([2, 3, 3, 5]); // [3, 5, 5, -1]

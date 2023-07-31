@@ -8,7 +8,7 @@ function rotatedArraySearch(rotated, target) {
         // * middle에 일치하는 경우 값 반환
         if (rotated[middle] === target) return middle;
 
-        // TODO middle 인덱스를 기준으로 어느 쪽이 정렬되어 있는가?
+        // middle 인덱스를 기준으로 어느 쪽이 정렬되어 있는가?
         // ! 정렬된 쪽에서 이진탐색을 실행한다.
         // ? 일반적으로 left보다 middle이 더 크다. 왼쪽 섹션에 middle이 있는 경우.
         if (rotated[left] < rotated[middle]) {

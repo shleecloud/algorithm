@@ -1,5 +1,5 @@
 const robotPath = function (room, src, dst) {
-    // TODO: 여기에 코드를 작성합니다.
+    // 여기에 코드를 작성합니다.
 
     function validCheck(src, count) {
         // 경계선을 벗어난지 확인
