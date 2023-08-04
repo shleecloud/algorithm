@@ -25,6 +25,10 @@ test('배열 예제', () => {
 # 백준 인풋 예시
 ```javascript
 // 한 줄
+const solution = (input) => {
+    const [a, b] = (input + '').split(' ').map((s) => +s);
+    return a + b;
+};
 process.stdin.on('data', (input) => console.log(solution(input)));
 
 // 여러줄
