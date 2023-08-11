@@ -34,10 +34,15 @@ process.stdin.on('data', (input) => console.log(solution(input)));
 // 여러줄
 const input = [];
 require('readline')
-        .createInterface({ input: process.stdin })
-        .on('line', (line) => input.push(line))
-        .on('close', (_) => {
-          console.log(solution(input));
-          process.exit(0);
-        });
+    .createInterface({input: process.stdin})
+    .on('line', (line) => input.push(line))
+    .on('close', (_) => {
+        const result = solution(input);
+        if (typeof result === 'string') {
+            console.log(result);
+        } else {
+            result.forEach((v) => console.log(v));
+        }
+        process.exit(0);
+    });
 ```

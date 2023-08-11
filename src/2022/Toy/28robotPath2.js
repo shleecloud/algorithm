@@ -20,20 +20,18 @@ const robotPath2 = function (room, src, sDir, dst, dDir) {
         const dirCase = getRotate(dir);
         for (let i = 0; i < dir.length; i += 1) {}
     }
-
-    // TODO
 };
 
-room = [
+let room = [
     [0, 0, 0, 0, 0, 0],
     [0, 1, 1, 0, 1, 0],
     [0, 1, 0, 0, 0, 0],
     [0, 0, 1, 1, 1, 0],
     [1, 's', 0, 0, 0, 0],
 ];
-src = [4, 2];
-sDir = 1;
-dst = [2, 2];
-dDir = 3;
-output = robotPath2(room, src, sDir, dst, dDir);
+let src = [4, 2];
+let sDir = 1;
+let dst = [2, 2];
+let dDir = 3;
+let output = robotPath2(room, src, sDir, dst, dDir);
 console.log(output); // --> 7
