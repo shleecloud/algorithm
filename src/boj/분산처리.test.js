@@ -20,19 +20,13 @@ const solution = (input) => {
     return result;
 };
 
-const input = [];
-require('readline')
-    .createInterface({input: process.stdin})
-    .on('line', (line) => input.push(line))
-    .on('close', (_) => {
-        const result = solution(input);
-        if (typeof result === 'string') {
-            console.log(result);
-        } else {
-            console.log(result.join('\n'));
-        }
-        process.exit(0);
-    });
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+const result = solution(input);
+if (Array.isArray(result)) {
+    console.log(result.join('\n'));
+} else {
+    console.log(result);
+}
 
 test('분산처리', () => {
     expect(solution(['5', '1 6', '3 7', '6 2', '7 100', '9 635', '10 1'])).toEqual(['1', '7', '6', '1', '9', '10']);

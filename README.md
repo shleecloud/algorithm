@@ -24,25 +24,16 @@ test('배열 예제', () => {
 
 # 백준 인풋 예시
 ```javascript
-// 한 줄
 const solution = (input) => {
     const [a, b] = (input + '').split(' ').map((s) => +s);
     return a + b;
 };
-process.stdin.on('data', (input) => console.log(solution(input)));
 
-// 여러줄
-const input = [];
-require('readline')
-    .createInterface({input: process.stdin})
-    .on('line', (line) => input.push(line))
-    .on('close', (_) => {
-        const result = solution(input);
-        if (typeof result === 'string') {
-            console.log(result);
-        } else {
-            result.forEach((v) => console.log(v));
-        }
-        process.exit(0);
-    });
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+const result = solution(input);
+if (Array.isArray(result)) {
+    console.log(result.join('\n'));
+} else {
+    console.log(result);
+}
 ```
