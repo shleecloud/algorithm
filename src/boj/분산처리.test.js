@@ -1,4 +1,3 @@
-const {expect, test} = require('@jest/globals');
 // https://www.acmicpc.net/problem/1009
 // 일반적인 방식으론 Infinity 나와서 실패하며 1의자리만 구해서 곱해야함.
 // 1000만번 연산은 계산가능하다.
