@@ -1,4 +1,4 @@
-# 테스트 예시
+# Jest 예시
 
 파일명은 `solution.test.js`로 한다.
 
@@ -23,6 +23,7 @@ test('배열 예제', () => {
 ```
 
 # 백준 인풋 예시
+## type1 fs.readFileSync
 ```javascript
 const solution = (input) => {
     const [a, b] = (input + '').split(' ').map((s) => +s);
@@ -31,9 +32,25 @@ const solution = (input) => {
 
 const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 const result = solution(input);
-if (Array.isArray(result)) {
-    console.log(result.join('\n'));
-} else {
-    console.log(result);
-}
+console.log(Array.isArray(result) ? result.join('\n') : result);
 ```
+
+## type2 readline.createInterface
+```javascript
+const solution = (input) => {
+    const [a, b] = (input + '').split(' ').map((s) => +s);
+    return a + b;
+};
+
+const input = [];
+require('readline')
+    .createInterface({input: process.stdin})
+    .on('line', (line) => input.push(line.trim()))
+    .on('close', (_) => {
+        const result = solution(input);
+        console.log(Array.isArray(result) ? result.join('\n') : result);
+        process.exit(0);
+    });
+```
+
+
