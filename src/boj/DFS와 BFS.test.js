@@ -56,16 +56,6 @@ function solution(input) {
     return [dfsResult, bfsResult];
 }
 
-// const input = [];
-// require('readline')
-//     .createInterface({input: process.stdin})
-//     .on('line', (line) => input.push(line.trim()))
-//     .on('close', (_) => {
-//         const result = solution(input);
-//         console.log(Array.isArray(result) ? result.join('\n') : result);
-//         process.exit(0);
-//     });
-
 require('fs').readFile('/dev/stdin', (err, data) => {
     const inputArray = data.toString().trim().split('\n');
     const result = solution(inputArray);
@@ -73,21 +63,7 @@ require('fs').readFile('/dev/stdin', (err, data) => {
 });
 
 test('DFS와 BFS', () => {
-    const caseConverter = (input) => input.toString().trim().split('\n');
-
-    expect(
-        solution(
-            caseConverter(`4 5 1
-1 2
-1 3
-1 4
-2 4
-3 4`),
-        ),
-    ).toEqual(
-        caseConverter(`1 2 4 3
-1 2 3 4`),
-    );
+    expect(solution(['4 5 1', '1 2', '1 3', '1 4', '2 4', '3 4'])).toEqual(['1 2 4 3', '1 2 3 4']);
     expect(solution(['5 5 3', '5 4', '5 2', '1 2', '3 4', '3 1'])).toEqual(['3 1 2 5 4', '3 1 4 2 5']);
     expect(solution(['1000 1 1000', '999 1000'])).toEqual(['1000 999', '1000 999']);
     expect(solution(['1 1 1', '1 1'])).toEqual(['1', '1']); // edge case

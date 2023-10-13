@@ -1,27 +1,20 @@
-# Jest 예시
+# Template
+```js
+function solution (input) {
+    const [a, b] = (input + '').split(' ').map((s) => +s);
+    return a + b;
+};
 
-파일명은 `solution.test.js`로 한다.
-
-```javascript
-test('단순 비교 예제', () => {
-  const input = `1 2`;
-  expect(solution(input)).toEqual(3);
+require('fs').readFile('/dev/stdin', (err, data) => {
+    const inputArray = data.toString().trim().split('\n')
+    const result = solution(inputArray);
+    console.log(Array.isArray(result) ? result.join('\n') : result);
 });
 
-// 답이 배열일 경우 순서를 무시하는 비교
-test('배열 예제', () => {
-    const caseConverter = (input) => input.toString().trim().split('\n');
-    
-    expect(solution([1, 2, 3, 4], 3)).toEqual(
-        expect.arrayContaining([ // <----- arrayContaining 사용
-            [1, 2, 3],
-            [1, 2, 4],
-            [1, 3, 4],
-            [2, 3, 4],
-        ]),
-    );
+test('Template', () => {
+    const input = `1 2`;
+    expect(solution(input)).toEqual(3);
 });
-
 ```
 
 # 백준 인풋 예시
@@ -61,4 +54,30 @@ require('readline')
     });
 ```
 
+# Jest 예시
 
+파일명은 `solution.test.js`로 한다.
+
+## type1 단순 비교 예제
+```javascript
+test('단순 비교 예제', () => {
+  const input = `1 2`;
+  expect(solution(input)).toEqual(3);
+});
+```
+
+## type2 배열 비교 예제
+```js
+// 답이 배열일 경우 순서를 무시하는 비교
+test('배열 예제', () => {
+    expect(solution([1, 2, 3, 4], 3)).toEqual(
+        expect.arrayContaining([ // <----- arrayContaining 사용
+            [1, 2, 3],
+            [1, 2, 4],
+            [1, 3, 4],
+            [2, 3, 4],
+        ]),
+    );
+});
+
+```
