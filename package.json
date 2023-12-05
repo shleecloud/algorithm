@@ -6,9 +6,12 @@
     "test:watch": "jest --config jest.config.js --passWithNoTests --detectOpenHandles --watchAll"
   },
   "dependencies": {
+    "@jest/globals": "^29.6.2",
     "fs": "^0.0.1-security",
     "jest": "^29.6.2",
-    "@jest/globals": "^29.6.2",
     "prettier": "^2.8.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.10"
   }
 }
