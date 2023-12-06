@@ -2,7 +2,6 @@
 * `parseBOJTestCase` 함수로 백준 예제를 테스트 케이스 자료형으로 변환한다. 
 ```js
 // @ts-check
-
 /** 
  * # 문제 이름
  * 문제 URL
