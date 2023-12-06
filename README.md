@@ -1,5 +1,5 @@
 # BOJ Template
-`parseBOJTestCase` 함수로 백준 예제를 테스트 케이스 자료형으로 변환한다. 
+* `parseBOJTestCase` 함수로 백준 예제를 테스트 케이스 자료형으로 변환한다. 
 ```js
 // @ts-check
 
@@ -46,7 +46,7 @@ testCases.forEach(({input, output}, index) => {
 
 # Jest 예시
 
-파일명은 `<문제 이름>.test.js`로 한다.
+* 파일명은 `<문제 이름>.test.js`로 한다.
 
 ## type1 단순 비교 예제
 ```javascript
@@ -57,7 +57,7 @@ test('단순 비교 예제', () => {
 
 ## type2 배열 비교 예제
 ```js
-// 답이 배열일 경우 순서를 무시하는 비교
+// 답이 배열이며 순서를 무시하는 비교
 test('배열 예제', () => {
     expect(solution([1, 2, 3, 4], 3)).toEqual(
         expect.arrayContaining([ // <----- arrayContaining 사용
