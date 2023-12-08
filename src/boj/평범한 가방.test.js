@@ -19,8 +19,23 @@
  * @return {number}
  */
 function solution(input) {
-    const [a, b] = (input + '').split(' ').map((s) => +s);
-    return a + b;
+    const [stuffsNumber, maxWeight] = input[0].split(' ').map(Number);
+    const stuffs = input.slice(1).map((str) => str.split(' ').map(Number));
+
+    const dp = Array.from({length: stuffsNumber + 1}, () => Array(maxWeight + 1).fill(0));
+
+    for (let i = 1; i <= stuffsNumber; i++) {
+        const [weight, value] = stuffs[i - 1];
+        for (let j = 1; j <= maxWeight; j++) {
+            if (j < weight) {
+                dp[i][j] = dp[i - 1][j];
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weight] + value);
+            }
+        }
+    }
+
+    return dp[stuffsNumber][maxWeight];
 }
 
 // * BOJ Input
