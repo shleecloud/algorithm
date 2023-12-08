@@ -22,20 +22,35 @@ function solution(input) {
     const [stuffsNumber, maxWeight] = input[0].split(' ').map(Number);
     const stuffs = input.slice(1).map((str) => str.split(' ').map(Number));
 
-    const dp = Array.from({length: stuffsNumber + 1}, () => Array(maxWeight + 1).fill(0));
-
-    for (let i = 1; i <= stuffsNumber; i++) {
-        const [weight, value] = stuffs[i - 1];
-        for (let j = 1; j <= maxWeight; j++) {
-            if (j < weight) {
-                dp[i][j] = dp[i - 1][j];
-            } else {
-                dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weight] + value);
+    const isOneDimension = true;
+    if (isOneDimension) {
+        // * 1차원 배열 풀이
+        const dp = Array(maxWeight + 1).fill(0);
+        for (let i = 0; i < stuffsNumber; i++) {
+            const [weight, value] = stuffs[i];
+            // * 무게가 큰 것부터 넣어야 중복을 피할 수 있다.
+            // 앞에서 부터 계산하면 방금 변경된 값이 다음 계산에 영향을 미친다.
+            for (let j = maxWeight; j >= weight; j--) {
+                dp[j] = Math.max(dp[j], dp[j - weight] + value);
             }
         }
-    }
 
-    return dp[stuffsNumber][maxWeight];
+        return dp[maxWeight];
+    } else {
+        // * 2차원 배열 풀이
+        const dp = Array.from({length: stuffsNumber + 1}, () => Array(maxWeight + 1).fill(0));
+        for (let i = 1; i <= stuffsNumber; i++) {
+            const [weight, value] = stuffs[i - 1];
+            for (let j = 1; j <= maxWeight; j++) {
+                if (j < weight) {
+                    dp[i][j] = dp[i - 1][j];
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weight] + value);
+                }
+            }
+        }
+        return dp[stuffsNumber][maxWeight];
+    }
 }
 
 // * BOJ Input
