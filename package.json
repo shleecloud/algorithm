@@ -1,6 +1,7 @@
 {
-  "name": "alogorithm",
+  "name": "algorithm",
   "license": "MIT",
+  "type": "commonjs",
   "scripts": {
     "test": "jest --config jest.config.js --passWithNoTests --detectOpenHandles --forceExit",
     "test:watch": "jest --config jest.config.js --passWithNoTests --detectOpenHandles --watchAll"
