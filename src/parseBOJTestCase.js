@@ -1,12 +1,17 @@
 // * BOJ Input
 const inputString = `예제 입력 1 
-4 7
-6 13
-4 8
-3 6
-5 12
+2 3
+2 7 1
+1 9 3
 예제 출력 1 
-14`;
+27
+예제 입력 2 
+3 9
+8 5 1
+1 2 2
+9 4 1
+예제 출력 2 
+7`;
 
 // * Execute
 const parsedExamples = parseBOJTestCase(inputString);
