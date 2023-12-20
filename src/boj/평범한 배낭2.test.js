@@ -28,21 +28,39 @@ function solution(input) {
   const stuffs = input
     .slice(1)
     .map((line) => line.split(' ').map(Number))
-    .map(([weight, value, count]) => {
+    .map(([weight, value, totalCount]) => {
       return {
         weight,
         value,
-        count,
+        totalCount,
       };
     });
 
   const dp = Array.from({length: maxWeight + 1}, () => 0);
   for (let i = 0; i < stuffsNumber; i++) {
-    const {weight, value, count} = stuffs[i];
-    for (let j = maxWeight; j >= weight; j--) {
-      for (let k = 1; k <= count; k++) {
-        if (j < weight * k) break;
-        dp[j] = Math.max(dp[j], dp[j - weight * k] + value * k);
+    let {weight, value, totalCount} = stuffs[i];
+
+    /** 모든 수는 2의 제곱으로 표현 가능하다.
+     * 이를 이용하여 물건의 개수를 2의 제곱으로 표현한다.
+     * 2의 배수로 떨어지지 않는 경우 나머지 개수만큼 물건을 추가한다.
+     * 시간 복잡도는 log로 해결된다. */
+    let index = 1;
+    const bulkStuffs = [];
+    while (0 < totalCount) {
+      const count = Math.min(index, totalCount);
+
+      bulkStuffs.push({
+        weight: weight * count,
+        value: value * count,
+      });
+
+      index *= 2;
+      totalCount -= count;
+    }
+
+    for (const {weight, value} of bulkStuffs) {
+      for (let k = maxWeight; k >= weight; k--) {
+        dp[k] = Math.max(dp[k], dp[k - weight] + value);
       }
     }
   }
@@ -61,10 +79,11 @@ require('fs').readFile('/dev/stdin', (err, data) => {
 // * TestCases
 const testCases = [
   {input: ['2 3', '2 7 1', '1 9 3'], output: 27},
+  {input: ['2 20', '2 7 1', '1 9 10'], output: 97},
   {input: ['3 9', '8 5 1', '1 2 2', '9 4 1'], output: 7},
 ];
 testCases.forEach(({input, output}, index) => {
-  test(`TestCase ${index}`, () => {
+  test(`TestCase ${index + 1}`, () => {
     expect(solution(input)).toEqual(output);
   });
 });
