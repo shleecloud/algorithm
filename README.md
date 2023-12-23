@@ -1,4 +1,4 @@
-# BOJ Template
+# BOJ Javascript Template
 
 - `parseBOJTestCase` 함수로 백준 예제를 테스트 케이스 자료형으로 변환한다.
 
@@ -66,4 +66,15 @@ test('배열 예제', () => {
     ]),
   );
 });
+```
+
+# BOJ Python Template
+
+```py
+def solution(input):
+    return int(input[0]) + int(input[1])
+
+# import sys
+# bojInput = sys.stdin.readline().split()
+# print(solution(bojInput))
 ```
